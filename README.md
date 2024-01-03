@@ -1,1 +1,1 @@
-# LeetCodeTasks.github.io
+This is my solved tasks from 'LeetCode'.
