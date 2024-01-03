@@ -6,3 +6,17 @@ You may assume that each input would have exactly one solution, and you may not 
 You can return the answer in any order.
 """
 
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        cort = {}
+        for i, j in enumerate(nums):
+            x = target - j
+            if x in cort:
+                return [cort[x], i]
+            cort[j] = i
+        return []
