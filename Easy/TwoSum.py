@@ -13,10 +13,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        cort = {}
+        d = {}
         for i, j in enumerate(nums):
             x = target - j
-            if x in cort:
-                return [cort[x], i]
-            cort[j] = i
+            if x in d:
+                return [d[x], i]
+            d[j] = i
         return []
