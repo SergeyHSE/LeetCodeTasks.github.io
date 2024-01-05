@@ -14,9 +14,9 @@ class Solution(object):
         :rtype: int
         """
 
-        k = 1
-        for i in range(1, len(nums)):
-            if nums[i] != nums[i - 1]:
-                nums[k] = nums [i]
+        k = 0
+        for i in nums:
+            if k == 0 or i != nums[k - 1]:
+                nums[k] = i
                 k += 1
         return k
