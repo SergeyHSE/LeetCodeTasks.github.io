@@ -6,3 +6,12 @@ substring
  consisting of non-space characters only.
  """
 
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        s = s.strip()
+        ws = s.split()
+        return len(ws[-1])
