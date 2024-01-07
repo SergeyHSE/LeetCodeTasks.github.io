@@ -4,3 +4,18 @@ You are given a large integer represented as an integer array digits, where each
 Increment the large integer by one and return the resulting array of digits.
 """
 
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+
+        for i in range(len(digits) - 1, -1, -1):
+            if digits[i] != 9:
+                digits[i] += 1
+                return digits
+            else:
+                digits[i] = 0
+
+        return [1] + digits
