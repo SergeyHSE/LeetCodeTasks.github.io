@@ -16,3 +16,13 @@ class Solution(object):
                 x = i
             count += (1 if i == x else -1)
         return x
+
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count = Counter(nums)
+        majority_element = max(count, key=count.get)
+        return majority_element
