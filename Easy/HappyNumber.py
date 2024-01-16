@@ -20,3 +20,20 @@ class Solution(object):
             seen.add(n)
             n = get_next(n)
         return n == 1
+
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        number_set = set()
+             
+        while n != 1 and n not in number_set:
+            number_set.add(n)
+            n = str(n)
+            num = 0
+            for i in n:
+                num += (int(i) ** 2)
+            n = num
+        return n == 1
