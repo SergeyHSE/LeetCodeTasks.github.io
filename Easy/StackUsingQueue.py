@@ -11,3 +11,51 @@ You must use only standard operations of a queue, which means that only push to 
 Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations.
 """
 
+class MyStack(object):
+
+    def __init__(self):
+        self.queue = deque()
+        
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        self.queue.append(x)
+        
+        for _ in range(len(self.queue) - 1):
+            self.queue.append(self.queue.popleft())
+        
+
+    def pop(self):
+        """
+        :rtype: int
+        """
+        if not self.queue:
+            return None
+        return self.queue.popleft()
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        if not self.queue:
+            return None
+        return self.queue[0]
+        
+
+    def empty(self):
+        """
+        :rtype: bool
+        """
+        return not bool(self.queue)
+
+
+# Your MyStack object will be instantiated and called as such:
+# obj = MyStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.empty()
