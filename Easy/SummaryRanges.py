@@ -7,3 +7,25 @@ Each range [a,b] in the list should be output as:
 "a" if a == b
 """
 
+class Solution(object):
+    def summaryRanges(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[str]
+        """
+        if not nums:
+            return []
+
+        result = []
+        n = len(nums)
+
+        i = 0
+        while i < n:
+            begin = nums[i]
+            while i < n - 1 and nums[i] == nums[i + 1] - 1:
+                i += 1
+            end = nums[i]
+            result.append("{}->{}".format(begin, end) if begin != end else str(begin))
+            i += 1
+
+        return result
