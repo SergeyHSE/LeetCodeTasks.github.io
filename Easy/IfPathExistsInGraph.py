@@ -4,3 +4,32 @@ You want to determine if there is a valid path that exists from vertex source to
 Given edges and the integers n, source, and destination, return true if there is a valid path from source to destination, or false otherwise.
 """
 
+class Solution(object):
+    def validPath(self, n, edges, source, destination):
+        """
+        :type n: int
+        :type edges: List[List[int]]
+        :type source: int
+        :type destination: int
+        :rtype: bool
+        """
+        graph = defaultdict(list)
+        for edge in edges:
+            graph[edge[0]].append(edge[1])
+            graph[edge[1]].append(edge[0])
+
+        queue = deque([source])
+        visited = set([source]) 
+
+        while queue:
+            current = queue.popleft()
+
+            if current == destination:
+                return True
+
+            for neighbor in graph[current]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+
+        return False
