@@ -3,3 +3,10 @@ There is an undirected star graph consisting of n nodes labeled from 1 to n. A s
 You are given a 2D integer array edges where each edges[i] = [ui, vi] indicates that there is an edge between the nodes ui and vi. Return the center of the given star graph.
 """
 
+class Solution(object):
+    def findCenter(self, edges):
+        """
+        :type edges: List[List[int]]
+        :rtype: int
+        """
+        return edges[0][0] if edges[0][0] in edges[1] else edges[0][1]
