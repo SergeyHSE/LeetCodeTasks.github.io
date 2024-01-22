@@ -15,3 +15,32 @@ An adjacency list is a collection of unordered lists used to represent a finite 
 The given node will always be the first node with val = 1. You must return the copy of the given node as a reference to the cloned graph.
 """
 
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution(object):
+    def cloneGraph(self, node):
+        """
+        :type node: Node
+        :rtype: Node
+        """
+
+        if not node:
+            return None
+        visited = {}
+        queue = deque([node])
+        visited[node] = Node(node.val)
+        while queue:
+            current = queue.popleft()
+            clone = visited[current]
+            for neighbor in current.neighbors:
+                if neighbor not in visited:
+                    visited[neighbor] = Node(neighbor.val)
+                    queue.append(neighbor)
+                clone.neighbors.append(visited[neighbor])
+        return visited[node]
