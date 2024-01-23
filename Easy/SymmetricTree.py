@@ -32,3 +32,35 @@ class Solution(object):
 
         return not root or Mirror(root.left, root.right)
         
+
+
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        
+        def Mirror(root_left, root_right):
+            if not root_left and not root_right:
+                return True
+            elif not root_left and root_right:
+                return False
+            elif root_left and not root_right:
+                return False
+            elif root_left.val != root_right.val:
+                return False
+            left = Mirror(root_left.left, root_right.right)
+            right = Mirror(root_left.right, root_right.left)
+            return left and right
+            
+        return Mirror(root.left, root.right)
