@@ -8,3 +8,4 @@ The one who removes the last stone is the winner.
 Given n, the number of stones in the heap, return true if you can win the game assuming both you and your friend play optimally, otherwise return false.
 """
 
+return n % 4 != 0
