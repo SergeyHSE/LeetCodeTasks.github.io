@@ -6,3 +6,11 @@ Replacing the number n on the chalkboard with n - x.
 Also, if a player cannot make a move, they lose the game.
 Return true if and only if Alice wins the game, assuming both players play optimally.
 """
+
+class Solution(object):
+    def divisorGame(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        return n % 2 == 0
