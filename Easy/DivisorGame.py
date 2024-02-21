@@ -14,3 +14,21 @@ class Solution(object):
         :rtype: bool
         """
         return n % 2 == 0
+
+class Solution(object):
+    def divisorGame(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        dp = [False] * (n + 1)
+        dp[1] = False  # Base case
+        
+        for i in range(2, n + 1):
+            # For each position i, check if there exists a factor x such that dp[i - x] is False
+            for x in range(1, i):
+                if i % x == 0 and not dp[i - x]:
+                    dp[i] = True
+                    break
+        
+        return dp[n]
