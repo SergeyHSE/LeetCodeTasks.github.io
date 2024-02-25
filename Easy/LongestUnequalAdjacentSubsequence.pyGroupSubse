@@ -18,13 +18,10 @@ class Solution(object):
         """
         n = len(words)
         result = []
-        used_groups = set()
         last_group = None
 
         for i in range(n):
             if groups[i] != last_group:
                 result.append(words[i])
                 last_group = groups[i]
-                used_groups.add(groups[i])
-
         return result
