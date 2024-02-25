@@ -8,3 +8,23 @@ such that groups[ij] != groups[ij+1] for each 0 <= j < k - 1 and then find the w
 Return the selected subsequence. If there are multiple answers, return any of them.
 Note: The elements in words are distinct.
 """
+
+class Solution(object):
+    def getLongestSubsequence(self, words, groups):
+        """
+        :type words: List[str]
+        :type groups: List[int]
+        :rtype: List[str]
+        """
+        n = len(words)
+        result = []
+        used_groups = set()
+        last_group = None
+
+        for i in range(n):
+            if groups[i] != last_group:
+                result.append(words[i])
+                last_group = groups[i]
+                used_groups.add(groups[i])
+
+        return result
