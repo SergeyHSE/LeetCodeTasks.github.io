@@ -1,0 +1,30 @@
+"""
+Given a positive integer num, return true if num is a perfect square or false otherwise.
+A perfect square is an integer that is the square of an integer. In other words, it is the product of some integer with itself.
+You must not use any built-in library function, such as sqrt.
+"""
+
+class Solution:
+  """
+  :type num: int
+  :rtype: bool
+  """
+  def isPerfectSquare(self, num):
+    if num == 1:
+      return True
+    
+    low = 1
+    high = num
+    
+    while low <= high:
+      mid = (low + high) // 2
+      mid_squared = mid * mid
+      
+      if mid_squared == num:
+        return True
+      elif mid_squared < num:
+        low = mid + 1
+      else:
+        high = mid - 1
+    
+    return False
