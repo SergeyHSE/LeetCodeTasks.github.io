@@ -49,3 +49,17 @@ Return the result table in any order.
 
 The result format is in the following example.
 
+-- Write your PostgreSQL query statement below
+with red_company_id as (
+    select com_id
+    from company
+    where name = 'RED'
+)
+
+select name
+from salesperson as s
+where not exists (
+    select 1
+    from orders as o
+    where s.sales_id = o.sales_id and com_id = (select com_id from red_company_id)
+)
