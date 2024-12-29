@@ -17,3 +17,10 @@ Return the result table in any order.
 
 The result format is in the following example.
 
+-- Write your PostgreSQL query statement below
+SELECT x, y, z, 
+       CASE 
+           WHEN x + y > z AND x + z > y AND y + z > x THEN 'Yes'
+           ELSE 'No' 
+       END AS "Triangle" 
+FROM Triangle;
