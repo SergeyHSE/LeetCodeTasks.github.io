@@ -18,3 +18,9 @@ Write a solution to report the movies with an odd-numbered ID and a description 
 Return the result table ordered by rating in descending order.
 
 The result format is in the following example.
+
+# Write your MySQL query statement below
+select id, movie, description, rating
+from cinema
+where id % 2 != 0 and description != 'Boring'
+order by rating desc;
