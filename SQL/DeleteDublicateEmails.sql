@@ -30,3 +30,8 @@ WHERE id NOT IN (
     ) AS temp
     WHERE row_num = 1
 );
+
+# Another soulution fro PostgreSQL
+
+DELETE FROM person p1 USING Person p2
+WHERE p1.email = p2.email AND p1.id > p2.id;
