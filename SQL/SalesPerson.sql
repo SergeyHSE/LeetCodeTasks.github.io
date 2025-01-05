@@ -1,4 +1,5 @@
-able: SalesPerson
+'''
+Table: SalesPerson
 
 +-----------------+---------+
 | Column Name     | Type    |
@@ -46,8 +47,8 @@ Each row of this table contains information about one order. This includes the I
 Write a solution to find the names of all the salespersons who did not have any orders related to the company with the name "RED".
 
 Return the result table in any order.
-
-The result format is in the following example.
+'''
+ 
 
 -- Write your PostgreSQL query statement below
 with red_company_id as (
@@ -63,3 +64,9 @@ where not exists (
     from orders as o
     where s.sales_id = o.sales_id and com_id = (select com_id from red_company_id)
 )
+
+
+-- Solution for MySQL
+
+select name from salesperson 
+where sales_id not in (select o.sales_id from orders o where o.com_id in (select c.com_id from company c where c.name='RED'))
