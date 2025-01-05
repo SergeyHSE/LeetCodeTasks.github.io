@@ -1,3 +1,4 @@
+'''
 +---------------+---------+
 | Column Name   | Type    |
 +---------------+---------+
@@ -12,11 +13,22 @@ This table contains information about the temperature on a certain day.
 Write a solution to find all dates' id with higher temperatures compared to its previous dates (yesterday).
 
 Return the result table in any order.
+'''
 
-The result format is in the following example.
+# For MySQL
 
 SELECT t1.id
 FROM Weather t1
 JOIN Weather t2
     ON t1.recordDate = DATE_ADD(t2.recordDate, INTERVAL 1 DAY)
 WHERE t1.temperature > t2.temperature;
+
+SELECT w2.id from Weather w1,Weather w2
+WHERE datediff(w2.recordDate, w1.recordDate) = 1 AND w2.temperature > w1.temperature;
+
+# For PostgreSQL 
+
+SELECT t2.id
+FROM Weather t1, Weather t2
+WHERE t2.recordDate - t1.recordDate = 1
+AND t2.temperature > t1.temperature;
