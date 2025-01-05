@@ -67,7 +67,7 @@ where not exists (
 
 -- Second code example for PostgreSQL
 
- SELECT s.name
+SELECT s.name
 FROM SalesPerson s
 WHERE s.sales_id NOT IN (
     SELECT o.sales_id
@@ -79,5 +79,14 @@ WHERE s.sales_id NOT IN (
 
 -- Solution for MySQL
 
-select name from salesperson 
-where sales_id not in (select o.sales_id from orders o where o.com_id in (select c.com_id from company c where c.name='RED'))
+select s.name
+from salesperson s
+where sales_id not in (
+    select o.sales_id 
+    from orders o 
+    where o.com_id in (
+        select c.com_id 
+        from company c 
+        where c.name='RED'
+        )
+    );
