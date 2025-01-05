@@ -65,6 +65,17 @@ where not exists (
     where s.sales_id = o.sales_id and com_id = (select com_id from red_company_id)
 )
 
+-- Second code example for PostgreSQL
+
+ SELECT s.name
+FROM SalesPerson s
+WHERE s.sales_id NOT IN (
+    SELECT o.sales_id
+    FROM Orders o
+    JOIN Company c
+    ON o.com_id = c.com_id
+    WHERE c.name = 'RED'
+)
 
 -- Solution for MySQL
 
