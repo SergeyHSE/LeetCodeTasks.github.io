@@ -21,6 +21,7 @@ Table: Employee
 | name             | varchar |
 | experience_years | int     |
 +------------------+---------+
+'''
 employee_id is the primary key of this table. It's guaranteed that experience_years is not NULL.
 Each row of this table contains information about one employee.
  
@@ -66,6 +67,7 @@ Explanation: The average experience years for the first project is (3 + 2 + 1) /
 '''
 
 # Write your MySQL query statement below
+
 select p.project_id, round(avg(experience_years), 2) as average_years
 from project p
 left join employee e on p.employee_id = e.employee_id
