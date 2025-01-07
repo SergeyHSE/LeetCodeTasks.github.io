@@ -33,7 +33,7 @@ Write a solution to find the average selling price for each product. average_pri
 # Write your MySQL query statement below
 SELECT 
     p.product_id,
-    ROUND(SUM(u.units * p.price) * 1.0 / NULLIF(SUM(u.units), 0), 2) AS average_price
+    IFNULL(ROUND(SUM(u.units * p.price) / SUM(u.units), 2), 0) AS average_price
 FROM 
     Prices p
 LEFT JOIN 
