@@ -27,3 +27,10 @@ Write a solution to find each query_name, the quality and poor_query_percentage.
 
 Both quality and poor_query_percentage should be rounded to 2 decimal places.
 '''
+
+# Write your MySQL query statement below
+select query_name,
+    round(avg(rating/position),2) quality,
+    round(sum(case when rating < 3 then 1 else 0 end)*100/count(*), 2) poor_query_percentage
+from queries
+group by query_name;
