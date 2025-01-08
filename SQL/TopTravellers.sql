@@ -28,3 +28,10 @@ Write a solution to report the distance traveled by each user.
 
 Return the result table ordered by travelled_distance in descending order, if two or more users traveled the same distance, order them by their name in ascending order.
 '''
+
+# Write your MySQL query statement below
+select u.name, ifnull(sum(r.distance), 0) travelled_distance
+from users u
+left join rides r on u.id = r.user_id
+group by r.user_id
+order by travelled_distance desc, u.name;
