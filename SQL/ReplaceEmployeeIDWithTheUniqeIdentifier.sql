@@ -25,3 +25,8 @@ Each row of this table contains the id and the corresponding unique id of an emp
 
 Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
 '''
+
+# Write your MySQL query statement below
+select eu.unique_id, e.name
+from employeeuni eu
+right join employees e on eu.id = e.id;
