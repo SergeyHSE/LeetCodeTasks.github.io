@@ -31,3 +31,10 @@ All accounts start with a balance of 0.
 Write a solution to report the name and balance of users with a balance higher than 10000.
 The balance of an account is equal to the sum of the amounts of all transactions involving that account.
 '''
+
+# Write your MySQL query statement below
+select u.name, sum(t.amount) balance
+from users u
+right join transactions t on u.account = t.account
+group by name
+having balance > 10000;
