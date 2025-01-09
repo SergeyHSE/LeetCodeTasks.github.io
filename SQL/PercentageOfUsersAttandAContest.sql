@@ -9,7 +9,6 @@ Table: Users
 +-------------+---------+
 user_id is the primary key (column with unique values) for this table.
 Each row of this table contains the name and the id of a user.
- 
 
 Table: Register
 
@@ -27,8 +26,9 @@ Write a solution to find the percentage of the users registered in each contest 
 
 Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
 '''
-
+ 
 # Write your MySQL query statement below
+
 select contest_id, round(count(user_id) * 100 / (select distinct count(user_id) amount_users
 from users), 2) as percentage
 from register
