@@ -28,3 +28,9 @@ The time to complete a process is the 'end' timestamp minus the 'start' timestam
 The resulting table should have the machine_id along with the average time as processing_time, which should be rounded to 3 decimal places.
 '''
 
+# Write your MySQL query statement below
+select 
+machine_id,
+round(sum(case when activity_type = 'start' then timestamp*(-1) else timestamp end) / count(activity_type) * 2, 3) as processing_time
+from activity
+group by machine_id;
