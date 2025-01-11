@@ -34,3 +34,21 @@ where employee_id not in (
     from employee
     where primary_flag = 'Y'
 );
+
+# Write your another MySQL query statement below
+select distinct employee_id, department_id
+from (
+    select employee_id, department_id, primary_flag,
+    row_number() over (
+        partition by employee_id
+        order by
+            case
+                when primary_flag = 'Y' then 1
+                when employee_id = department_id then 2
+                else 3
+            end
+        
+    ) as rn
+    from employee
+) ranked
+where rn = 1;
