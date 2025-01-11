@@ -18,3 +18,14 @@ For this problem, we will consider a manager an employee who has at least 1 othe
 Write a solution to report the ids and the names of all managers,
 the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer.
 '''
+
+# Write your MySQL query statement below
+select
+e1.employee_id,
+e1.name,
+count(e2.reports_to) as reports_count,
+round(avg(e2.age), 0) as average_age
+from employees e1
+join employees e2 on e1.employee_id = e2.reports_to
+group by employee_id
+order by employee_id;
