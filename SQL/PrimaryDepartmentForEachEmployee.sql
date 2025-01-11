@@ -21,3 +21,16 @@ their primary column is 'N'.
 Write a solution to report all the employees with their primary department.
 For employees who belong to one department, report their only department.
 '''
+# Write your MySQL query statement below
+select employee_id, department_id
+from employee
+where primary_flag = 'Y'
+union
+select
+employee_id, department_id
+from employee
+where employee_id not in (
+    select employee_id
+    from employee
+    where primary_flag = 'Y'
+);
