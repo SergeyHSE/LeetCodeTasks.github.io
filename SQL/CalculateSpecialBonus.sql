@@ -17,3 +17,13 @@ The bonus of an employee is 100% of their salary if the ID of the employee is an
 
 Return the result table ordered by employee_id.
 '''
+
+/* Write your T-SQL query statement below */
+select
+employee_id,
+case 
+    when employee_id % 2 != 0 and name not like 'M%' then salary
+    else 0
+end as bonus
+from employees
+order by employee_id;
