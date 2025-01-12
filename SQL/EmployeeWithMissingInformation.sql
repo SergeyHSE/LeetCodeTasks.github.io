@@ -29,4 +29,9 @@ The employee's name is missing, or
 The employee's salary is missing.
 Return the result table ordered by employee_id in ascending order.
 '''
-
+/* Write your T-SQL query statement below */
+select coalesce(e.employee_id, s.employee_id) as employee_id
+from employees e
+full join salaries s on e.employee_id = s.employee_id
+where e.employee_id is null or s.salary is null
+order by employee_id;
