@@ -14,3 +14,10 @@ Each row in this table indicates that the teacher with teacher_id teaches the su
 
 Write a solution to calculate the number of unique subjects each teacher teaches in the university.
 '''
+
+/* Write your T-SQL query statement below */
+select
+teacher_id,
+count(distinct subject_id) as cnt
+from teacher
+group by teacher_id;
