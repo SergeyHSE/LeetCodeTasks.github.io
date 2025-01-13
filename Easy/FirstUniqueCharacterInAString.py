@@ -22,12 +22,12 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-    dict_characters = {}
-    for i in s:
-        dict_characters[i] = dict_characters.get(i, 0) + 1
+        dict_characters = {}
+        for i in s:
+            dict_characters[i] = dict_characters.get(i, 0) + 1
 
-    for j in range(len(s)):
-        if dict_characters[s[i]] == 1:
-            return i
+        for j in range(len(s)):
+            if dict_characters[s[j]] == 1:
+                return j
 
-    return -1 
+        return -1 
