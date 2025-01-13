@@ -14,3 +14,17 @@ class Solution(object):
         for i in t:
             if s.count(i) != t.count(i):
                 return i
+
+class Solution(object):
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        s, t = sorted(s), sorted(t)
+        for i, j in zip(s, t):
+            if i != j:
+                return j
+        
+        return t[-1]
