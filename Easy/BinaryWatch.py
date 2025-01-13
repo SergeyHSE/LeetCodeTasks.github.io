@@ -14,3 +14,19 @@ The minute must consist of two digits and may contain a leading zero.
 
 For example, "10:2" is not valid. It should be "10:02".
 '''
+
+class Solution(object):
+    def readBinaryWatch(self, turnedOn):
+        """
+        :type turnedOn: int
+        :rtype: List[str]
+        """
+        def count_bits(n):
+            return bin(n).count('1')
+        results = []
+        for hour in range(12):
+            for minute in range(60):
+                if count_bits(hour) + count_bits(minute) == turnedOn:
+                    results.append(f"{hour}:{minute:02d}")
+
+        return results
