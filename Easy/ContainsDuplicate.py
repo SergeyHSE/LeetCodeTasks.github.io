@@ -15,7 +15,7 @@ class Solution(object):
             set_nums.add(num)
         return False
 
-# Another
+# Another, but Q(n^2) complexity
 
 class Solution(object):
     def containsDuplicate(self, nums):
@@ -30,3 +30,12 @@ class Solution(object):
 
         return False
 
+# Another, Q(n) complexity
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        return len(nums) != len(set(nums))
