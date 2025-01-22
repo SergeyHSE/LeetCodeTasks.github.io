@@ -6,3 +6,17 @@ which could be shorter than k but still must contain at least one character. Fur
 and you should convert all lowercase letters to uppercase.
 Return the reformatted license key.
 '''
+
+class Solution(object):
+    def licenseKeyFormatting(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        s = list(s.replace('-', ''))
+
+        for i in range(len(s) - k, 0, -k):
+            s[i] = '-' + s[i]
+
+        return ''.join(s).upper()
