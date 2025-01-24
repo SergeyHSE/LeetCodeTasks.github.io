@@ -22,3 +22,20 @@ class Solution(object):
         return [next_greater.get(num, -1) for num in nums1]
 
   
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :rtype: List[int]
+        """
+        result = []
+        for i in nums1:
+            m = i
+            a = -1
+            indx = nums2.index(m)
+            for j in range(indx, len(nums2)):
+                if nums2[j] > m:
+                    a = nums2[j]
+                    break
+            result.append(a)
+        return result
