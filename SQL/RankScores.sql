@@ -9,3 +9,8 @@ Return the result table ordered by score in descending order.
 The result format is in the following example.
 '''
 
+select score, dense_rank()
+    over(
+        order by score desc
+) as 'rank'
+from scores;
