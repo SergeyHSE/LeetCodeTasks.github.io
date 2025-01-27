@@ -11,3 +11,24 @@ For the 4th place to the nth place athlete, their rank is their placement number
 Return an array answer of size n where answer[i] is the rank of the ith athlete.
 '''
 
+class Solution(object):
+    def findRelativeRanks(self, score):
+        """
+        :type score: List[int]
+        :rtype: List[str]
+        """
+
+        sorted_score = sorted(score, reverse=True)
+        dict_result = {}
+
+        
+        for i, j in enumerate(sorted_score, start=1):
+            if i == 1:
+                dict_result[j] = 'Gold Medal'
+            elif i == 2:
+                dict_result[j] = 'Silver Medal'
+            elif i == 3:
+                dict_result[j] = 'Bronze Medal'
+            else:
+                dict_result[j] = str(i)
+        return [dict_result[j] for j in score] 
