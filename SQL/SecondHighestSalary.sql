@@ -39,6 +39,13 @@ Output:
 +---------------------+
 '''
 
+# First solution
 select max(salary) secondhighestsalary
 from employee
 where salary not in (select max(salary) from employee);
+
+# Second solution
+select(select distinct salary
+from employee
+order by salary desc
+limit 1 offset 1) as secondhighestsalary;
