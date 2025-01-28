@@ -32,10 +32,19 @@ Return the result table in any order.
 
 The result format is in the following example.
 '''
-
+# first solution
 select d.name as department, e.name as employee, e.salary as salary
 from employee e
 join department d on e.departmentid = d.id
 where e.salary = (select max(e1.salary)
                 from employee e1
                 where e1.departmentid = e.departmentid);
+
+# second solution
+select d.name as department, e.name as employee, e.salary as salary
+from employee e
+join department d on e.departmentid = d.id
+where (e.departmentid, e.salary) in 
+    (select departmentid, max(salary)
+    from employee
+    group by departmentid);
