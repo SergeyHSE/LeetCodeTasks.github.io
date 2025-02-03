@@ -19,13 +19,29 @@ then divide that number by the total number of players.
 '''
 
 # Write your MySQL query statement below
-with cte_activity_rank as (select *, dense_rank() over(
-    partition by player_id order by event_date
-) as date_rank
-from activity)
-select player_id
-from cte_activity_rank 
-where event_date in (select date_add(event_date, interval -1 day) as second_date
-from cte_activity_rank
-where date_rank = 2)
+WITH first_login AS (
+    SELECT 
+        player_id,
+        MIN(event_date) AS first_login_date
+    FROM 
+        Activity
+    GROUP BY 
+        player_id
+),
+next_day_login AS (
+    SELECT 
+        a.player_id
+    FROM 
+        Activity a
+    JOIN 
+        first_login f ON a.player_id = f.player_id 
+                   AND a.event_date = DATE_ADD(f.first_login_date, INTERVAL 1 DAY)
+)
+SELECT 
+    ROUND(COUNT(DISTINCT next_day_login.player_id) / COUNT(DISTINCT first_login.player_id), 2) AS fraction
+FROM 
+    first_login
+LEFT JOIN 
+    next_day_login ON first_login.player_id = next_day_login.player_id;
+
 ;
