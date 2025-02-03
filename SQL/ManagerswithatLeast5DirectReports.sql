@@ -20,8 +20,8 @@ Write a solution to find managers with at least five direct reports.
 Return the result table in any order.
 '''
 # Write your MySQL query statement below
-select e1.name, count(e2.name) as name2, e1.managerid
+select e2.name
 from employee e1
-left join employee e2 on e1.managerid = e2.id
-group by e1. name, e1.managerid
-having count(e2.name) >= 5;
+join employee e2 on e1.managerid = e2.id
+group by e2.id, e2.managerid
+having count(e1.id) >= 5;
