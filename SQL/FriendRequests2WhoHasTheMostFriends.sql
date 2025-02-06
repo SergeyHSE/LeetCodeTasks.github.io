@@ -17,3 +17,15 @@ Write a solution to find the people who have the most friends and the most frien
 The test cases are generated so that only one person has the most friends.
 '''
 
+# Write your MySQL query statement below
+with ste_requestaccepted as (select requester_id, accepter_id
+    from requestAccepted
+    union all
+    select accepter_id, requester_id
+    from requestaccepted
+)
+select requester_id as id, count(requester_id) as num
+from ste_requestaccepted
+group by requester_id
+order by num desc
+limit 1;
