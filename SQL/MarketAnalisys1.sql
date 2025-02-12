@@ -43,8 +43,11 @@ Write a solution to find for each user, the join date and the number of orders t
 '''
 
 # Write your MySQL query statement below
-select o.buyer_id, u.join_date, o.order_date, i.item_id
+select u.user_id as buyer_id, u.join_date, sum(case
+    when o.order_date like '2019%' then 1
+    else 0
+end) as orders_in_2019
 from users u
-join orders o on u.user_id = o.buyer_id
-join items i on o.item_id = i.item_id
-;
+left join orders o on u.user_id = o.buyer_id
+group by user_id
+order by user_id;
